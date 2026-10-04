@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Edge Mail</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#059669">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+(function () {
+  try {
+    var t = localStorage.getItem('es_theme');
+    if (!t) t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark';
+    var l = localStorage.getItem('es_lang') || 'en';
+    document.documentElement.setAttribute('data-theme', t);
+    document.documentElement.setAttribute('lang', l);
+    document.documentElement.setAttribute('dir', l === 'fa' ? 'rtl' : 'ltr');
+  } catch (e) {}
+})();
+</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="bgw" aria-hidden="true"><i></i><i></i></div>
+
+<div class="wrap">
+  <header class="hd">
+    <div class="bt">
+      <h1 data-i18n="app_name">Edge Mail</h1>
+      <small data-i18n="app_tagline">Your private email on your own domain</small>
+    </div>
+    <div class="hd-actions">
+      <button class="ib" id="langToggle" type="button" aria-label="Language">فا</button>
+      <button class="ib" id="themeToggle" type="button" aria-label="Theme">
+        <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="card sec auth-card">
+    <div class="protos" role="tablist">
+      <span class="ptag ac" id="tabLogin" role="tab" tabindex="0" aria-selected="true" data-i18n="login">Log in</span>
+      <span class="ptag" id="tabSignup" role="tab" tabindex="0" aria-selected="false" data-i18n="signup">Sign up</span>
+    </div>
+    <h2 class="at-title" id="authTitle" data-i18n="auth_welcome">Welcome back</h2>
+    <form id="authForm" novalidate>
+      <div class="sec" style="padding:0">
+        <div class="f">
+          <label class="lb" for="email" data-i18n="email">Email</label>
+          <input class="in" id="email" type="email" autocomplete="email" required data-i18n-attr="placeholder:email_placeholder" placeholder="you@example.com">
+        </div>
+        <div class="f">
+          <label class="lb" for="password" data-i18n="password">Password</label>
+          <input class="in" id="password" type="password" autocomplete="current-password" required data-i18n-attr="placeholder:password_placeholder" placeholder="••••••••">
+          <span class="hint" data-i18n="password_hint">At least 8 characters</span>
+        </div>
+        <div class="hint no" id="authError" role="alert" hidden></div>
+        <div class="fa2">
+          <button class="b bp bl" id="submitBtn" type="submit" data-i18n="login_action">Log in</button>
+        </div>
+      </div>
+    </form>
+  </main>
+
+  <div class="card pv auth-card">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+    <span data-i18n="security_note">Passwords are hashed with PBKDF2-SHA256. Your session uses an HTTP-only cookie.</span>
+  </div>
+
+  <footer class="foot">
+    <div class="dev"><span data-i18n="made_by">made by</span> <a class="dev-link" href="https://developers.cloudflare.com/workers/" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a></div>
+    <div class="lk">
+      <a class="tg-lk" href="/privacy" data-i18n="privacy">Privacy</a>
+      <a class="gh-lk" href="/terms" data-i18n="terms">Terms</a>
+    </div>
+    <div class="copy">© Edge Mail</div>
+  </footer>
+
+  <div class="footer-bottom">
+    <span data-i18n="footer_created_with">Created with</span>
+    <span class="heart" role="img" aria-label="love">❤️</span>
+    <span>&amp;</span>
+    <span class="coffee" role="img" aria-label="coffee">☕</span>
+    <span data-i18n="footer_by">by</span>
+    <span class="credit-name">Hossein Seyed Bagheri</span>
+    <a
+      class="github-link"
+      href="https://github.com/hosseinb1111/email-service-cloudflare"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="View project on GitHub"
+      title="View on GitHub"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
+           aria-hidden="true" focusable="false">
+        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+      </svg>
+    </a>
+  </div>
+</div>
+
+<script src="/js/theme.js"></script>
+<script src="/js/i18n.js"></script>
+<script src="/js/api.js"></script>
+<script src="/js/auth.js"></script>
+</body>
+</html>

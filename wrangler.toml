@@ -1,0 +1,40 @@
+# ---------------------------------------------------------------------------
+# Cloudflare Email Routing (manual step in the dashboard)
+#
+#   1. Dashboard -> your domain -> Email -> Email Routing -> Enable.
+#      Cloudflare adds the required MX + TXT (SPF) records automatically.
+#   2. Email Routing -> Routing rules -> Catch-all address -> Action:
+#      "Send to a Worker" -> select the `email-service` Worker -> Save + enable.
+#      (This routes *@yourdomain.com to the Worker's `email()` handler.)
+#
+# Addresses nobody has claimed are silently dropped by the Worker.
+# ---------------------------------------------------------------------------
+name = "email-service"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "email-service-db"
+database_id = "REPLACE_WITH_YOUR_DATABASE_ID"
+migrations_dir = "migrations"
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+not_found_handling = "single-page-application"
+run_worker_first = ["/api/*"]
+
+# Outgoing mail (Cloudflare Email Service, Workers Paid plan). Before sending works you must also
+# onboard your domain: Dashboard -> Compute -> Email Service -> Email Sending -> Onboard Domain.
+[[send_email]]
+name = "EMAIL"
+
+[vars]
+DOMAIN = "yourdomain.com"
+ENVIRONMENT = "production"
+
+# Secrets (never put these in this file):
+#   npx wrangler secret put JWT_SECRET
+# Local development reads secrets and overrides from `.dev.vars`.

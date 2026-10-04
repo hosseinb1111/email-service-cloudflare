@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Edge Mail</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#059669">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+(function () {
+  try {
+    var t = localStorage.getItem('es_theme');
+    if (!t) t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark';
+    var l = localStorage.getItem('es_lang') || 'en';
+    document.documentElement.setAttribute('data-theme', t);
+    document.documentElement.setAttribute('lang', l);
+    document.documentElement.setAttribute('dir', l === 'fa' ? 'rtl' : 'ltr');
+  } catch (e) {}
+})();
+</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="bgw" aria-hidden="true"><i></i><i></i></div>
+
+<div class="wrap">
+  <header class="hd">
+    <div class="bt">
+      <h1 data-i18n="inbox">Inbox</h1>
+      <small class="mono" id="userEmail"></small>
+    </div>
+    <div class="hd-actions">
+      <button class="ib" id="langToggle" type="button" aria-label="Language">فا</button>
+      <button class="ib" id="themeToggle" type="button" aria-label="Theme">
+        <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="ib" id="logoutBtn" type="button" data-i18n-title="logout" title="Log out" aria-label="Log out">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <section class="card feat">
+    <div class="fm">
+      <div class="lg" id="userAvatar">?</div>
+      <div class="ft2">
+        <b><span id="primaryAddress"></span></b>
+        <div><span class="ver" id="addressCount">0/5</span></div>
+      </div>
+    </div>
+    <div class="fa2">
+      <button class="b bp" id="composeBtn" type="button" data-i18n="compose">Compose</button>
+      <button class="b" id="pst" type="button" data-i18n="copy_address">Copy address</button>
+      <button class="b" id="newAddressBtn" type="button" data-i18n="new_address">New address</button>
+      <button class="b" id="clr" type="button" data-i18n="logout">Log out</button>
+    </div>
+  </section>
+
+  <div class="qk" id="addressList"></div>
+
+  <section class="card sec">
+    <div class="row">
+      <span class="lb" data-i18n="inbox">Inbox</span>
+      <div class="toolbar">
+        <label class="tgl">
+          <input type="checkbox" id="unreadOnly">
+          <span class="trk"></span>
+          <span data-i18n="unread_only">Unread only</span>
+        </label>
+        <button class="b bs" id="refreshBtn" type="button" data-i18n="refresh">Refresh</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="emailList" aria-live="polite"></section>
+
+  <div class="card pv" id="emptyState" hidden>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    <span data-i18n="no_emails">No emails yet. Share your address with others.</span>
+  </div>
+
+  <footer class="foot">
+    <div class="dev"><span data-i18n="made_by">made by</span> <a class="dev-link" href="https://developers.cloudflare.com/workers/" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a></div>
+    <div class="lk">
+      <a class="tg-lk" href="/privacy" data-i18n="privacy">Privacy</a>
+      <a class="gh-lk" href="/terms" data-i18n="terms">Terms</a>
+    </div>
+    <div class="copy">© Edge Mail</div>
+  </footer>
+
+  <div class="footer-bottom">
+    <span data-i18n="footer_created_with">Created with</span>
+    <span class="heart" role="img" aria-label="love">❤️</span>
+    <span>&amp;</span>
+    <span class="coffee" role="img" aria-label="coffee">☕</span>
+    <span data-i18n="footer_by">by</span>
+    <span class="credit-name">Hossein Seyed Bagheri</span>
+    <a
+      class="github-link"
+      href="https://github.com/hosseinb1111/email-service-cloudflare"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="View project on GitHub"
+      title="View on GitHub"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
+           aria-hidden="true" focusable="false">
+        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+      </svg>
+    </a>
+  </div>
+</div>
+
+<!-- Shared modal overlay: exactly one .notice-card is visible at a time. -->
+<div id="notice-overlay" class="hidden" role="dialog" aria-modal="true">
+
+  <div class="notice-card" id="claimModal" hidden>
+    <h3 data-i18n="claim_address">Claim address</h3>
+    <div class="f">
+      <label class="lb" for="localPart" data-i18n="local_part">Local part</label>
+      <div class="inl">
+        <input class="in" id="localPart" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="64">
+        <span class="ptag" id="domainTag">@</span>
+      </div>
+      <span class="hint" data-i18n="local_part_hint">Letters, numbers, dots, dashes. Lowercase only.</span>
+      <span class="hint" id="availabilityHint" aria-live="polite"></span>
+    </div>
+    <div class="fa2">
+      <button class="b bp" id="claimBtn" type="button" disabled data-i18n="claim_action">Claim</button>
+      <button class="b" type="button" data-close data-i18n="cancel">Cancel</button>
+    </div>
+  </div>
+
+  <div class="notice-card wide" id="emailModal" hidden>
+    <div class="row">
+      <h3 id="emailSubject"></h3>
+      <button class="ib" type="button" data-close data-i18n-title="close" title="Close" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="card pv meta">
+      <div><b data-i18n="from">From</b><span id="metaFrom"></span></div>
+      <div><b data-i18n="to">To</b><span id="metaTo" class="mono"></span></div>
+      <div><b data-i18n="received">Received</b><span id="metaDate"></span></div>
+      <div id="metaAttWrap" hidden><b data-i18n="attachments">Attachments</b><span id="metaAtt"></span></div>
+    </div>
+    <iframe id="emailFrame" sandbox="" title="Email" style="width:100%; min-height:60vh; border:0; border-radius: var(--r2); background: var(--s2);"></iframe>
+    <div class="fa2">
+      <button class="b bs" id="markReadBtn" type="button" data-i18n="mark_unread">Mark as unread</button>
+      <button class="b" id="jsonBtn" type="button" data-i18n="reply">Reply</button>
+      <button class="b" id="deleteBtn" type="button" data-i18n="delete">Delete</button>
+    </div>
+  </div>
+
+  <div class="notice-card wide" id="composeModal" hidden>
+    <div class="row">
+      <h3 data-i18n="compose">Compose</h3>
+      <button class="ib" type="button" data-close data-i18n-title="close" title="Close" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="f">
+      <label class="lb" for="composeFrom" data-i18n="from">From</label>
+      <div class="sw">
+        <select class="in mono" id="composeFrom"></select>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </div>
+    <div class="f">
+      <label class="lb" for="composeTo" data-i18n="to">To</label>
+      <input class="in" id="composeTo" type="email" autocomplete="off" spellcheck="false" maxlength="254" data-i18n-attr="placeholder:to_placeholder" placeholder="recipient@example.com">
+    </div>
+    <div class="f">
+      <label class="lb" for="composeSubject" data-i18n="subject">Subject</label>
+      <input class="in" id="composeSubject" type="text" autocomplete="off" maxlength="200" dir="auto" data-i18n-attr="placeholder:subject_placeholder" placeholder="Subject">
+    </div>
+    <div class="f">
+      <label class="lb" for="composeBody" data-i18n="message_body">Message</label>
+      <textarea class="in tx" id="composeBody" rows="10" maxlength="100000" dir="auto" data-i18n-attr="placeholder:body_placeholder" placeholder="Write your message…"></textarea>
+    </div>
+    <div class="hint" id="composeHint" role="status" aria-live="polite"></div>
+    <div class="fa2">
+      <button class="b bp" id="sendBtn" type="button" data-i18n="send">Send</button>
+      <button class="b" type="button" data-close data-i18n="cancel">Cancel</button>
+    </div>
+  </div>
+
+  <div class="notice-card" id="confirmModal" hidden>
+    <h3 id="confirmText"></h3>
+    <div class="fa2">
+      <button class="b no" id="confirmYes" type="button" data-i18n="confirm_yes">Yes, continue</button>
+      <button class="b" type="button" data-close data-i18n="cancel">Cancel</button>
+    </div>
+  </div>
+
+</div>
+
+<script src="/js/theme.js"></script>
+<script src="/js/i18n.js"></script>
+<script src="/js/api.js"></script>
+<script src="/js/inbox.js"></script>
+</body>
+</html>

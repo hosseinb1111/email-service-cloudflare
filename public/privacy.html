@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy – Edge Mail</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#059669">
+<meta name="description" content="How Edge Mail handles your information.">
+<meta name="robots" content="index,follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+(function () {
+  try {
+    var t = localStorage.getItem('es_theme');
+    if (!t) t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark';
+    var l = localStorage.getItem('es_lang') || 'en';
+    document.documentElement.setAttribute('data-theme', t);
+    document.documentElement.setAttribute('lang', l);
+    document.documentElement.setAttribute('dir', l === 'fa' ? 'rtl' : 'ltr');
+  } catch (e) {}
+})();
+</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body data-page-title="privacy">
+<div class="bgw" aria-hidden="true"><i></i><i></i></div>
+
+<div class="wrap">
+  <header class="hd">
+    <div class="bt">
+      <h1><a href="/" data-i18n="app_name">Edge Mail</a></h1>
+      <small data-i18n="app_tagline">Your private email on your own domain</small>
+    </div>
+    <div class="hd-actions">
+      <button class="ib" id="langToggle" type="button" aria-label="Language">فا</button>
+      <button class="ib" id="themeToggle" type="button" aria-label="Theme">
+        <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="card legal">
+    <a class="b bs legal-back" href="/" data-i18n="back_home">Back to Edge Mail</a>
+    <div class="l-en" lang="en" dir="ltr">
+<h2>Privacy Policy</h2>
+<div class="upd">Last updated: October 4, 2026</div>
+<p>Edge Mail lets you claim an email address on this site's domain, receive mail there and send mail from it. This policy explains what information the service handles, why, who else can see it, and what choices you have. “We” and “the operator” mean the person or organization running this instance of Edge Mail.</p>
+<div class="callout"><p><b>In short:</b> no ads, no tracking, no analytics, and we do not sell your data. But email is not end-to-end encrypted, so please do not use this service for highly sensitive information.</p></div>
+
+<h3>1. Information we handle</h3>
+<ul>
+<li><b>Account:</b> your sign-up email address, your language and theme choice, and when the account was created. Your password is never stored; only a salted PBKDF2-SHA256 hash is kept, which we cannot read back.</li>
+<li><b>Addresses:</b> the addresses you claim on this domain and when you claimed them.</li>
+<li><b>Mail you receive:</b> for addresses that have been claimed, we store the sender's address and name, the subject, the text and HTML of the message, its headers, a list of attachments (name, type and size only; attachment contents are not stored), the message ID, read/deleted status and the time received. Mail sent to addresses nobody has claimed is dropped and not stored.</li>
+<li><b>Mail you send:</b> the message passes through Cloudflare Email Service to its recipient. We do not keep a copy (there is no Sent folder). We do keep a log of the sending address, recipient address, subject, message ID and time, which is used to enforce the daily sending limit.</li>
+<li><b>Session and browser:</b> a strictly necessary, HTTP-only session cookie that keeps you logged in (7 days), and your language and theme choice saved in your browser's local storage.</li>
+<li><b>Technical data:</b> your IP address is used briefly, in memory, to limit how many requests can be made in a minute. The application does not save it in its database. Cloudflare, which runs the infrastructure, may keep its own logs under its own policies.</li>
+</ul>
+<h3>2. How we use it</h3>
+<p>Only to run the service: to create and secure your account, deliver and display your mail, send the mail you write, enforce limits, prevent abuse and fix problems. We do not use your information for advertising, profiling or selling to anyone.</p>
+<h3>3. Who else is involved</h3>
+<ul>
+<li><b>Cloudflare</b> hosts the site (Workers), stores the data (D1 database), receives incoming mail (Email Routing) and delivers outgoing mail (Email Service). Cloudflare processes data on our behalf under its own terms and privacy policy.</li>
+<li><b>Google Fonts:</b> the pages load fonts from Google, which receives your IP address and browser details when you visit.</li>
+<li><b>People you write to:</b> anything you send is delivered to the recipient and their mail provider, who handle it under their own policies.</li>
+<li><b>Authorities:</b> we may disclose information if the law requires it, or to protect the service and its users from abuse.</li>
+</ul>
+<p><b>Remote content in emails.</b> HTML emails are shown in a sandbox with scripts disabled, but images and other content in a message may still load from the sender's server. That can tell the sender that you opened the message and reveal your IP address.</p>
+<h3>4. How long we keep it, and deleting</h3>
+<ul>
+<li>Your account, addresses and mail are kept until they are deleted.</li>
+<li><b>Deleting a message</b> removes it from your inbox, but it is only marked as deleted and may remain stored until you release the address or your account is removed.</li>
+<li><b>Releasing an address</b> permanently deletes all mail stored for that address.</li>
+<li>The sending log is kept while your account exists.</li>
+<li>Sessions expire after 7 days; logging out ends yours immediately.</li>
+<li>Cloudflare may keep database backups for a limited period after data is deleted.</li>
+<li><b>Closing your account:</b> there is no self-service button yet. Contact us (section 9) and we will delete your account, addresses, stored mail and sending log.</li>
+</ul>
+<h3>5. Security</h3>
+<p>The site is served over HTTPS, passwords are hashed, the session cookie is HTTP-only and SameSite=Strict, and each user can only read mail for their own addresses. No system is perfectly secure, though, and some limits are inherent to email: messages are <b>not end-to-end encrypted</b>, they may cross the internet between mail servers without encryption, and the operator, who has administrative access to the database, could technically read stored messages.</p>
+<h3>6. Your choices and rights</h3>
+<p>You can ask us to give you a copy of your information, correct it, or delete it. Depending on where you live (for example under the GDPR) you may also have the right to object to or restrict processing and to complain to your data protection authority. You can change your language and theme at any time. If you block the session cookie, you will not be able to log in.</p>
+<h3>7. Children</h3>
+<p>Edge Mail is not intended for anyone under 16, and we do not knowingly collect information from children. If you believe a child has created an account, contact us and we will remove it.</p>
+<h3>8. International processing and changes</h3>
+<p>Cloudflare operates worldwide, so your information may be processed in countries other than your own. We may update this policy; the date at the top shows the latest version, and continuing to use the service after a change means you accept it.</p>
+<h3>9. Contact</h3>
+<p>Questions, requests to access or delete your data, or privacy concerns: please contact the operator through the project page at <a href="https://github.com/hosseinb1111/email-service-cloudflare/issues" target="_blank" rel="noopener noreferrer">github.com/hosseinb1111/email-service-cloudflare</a>.</p>
+    </div>
+    <div class="l-fa" lang="fa" dir="rtl">
+<h2>سیاست حریم خصوصی</h2>
+<div class="upd">آخرین به‌روزرسانی: ۱۲ مهر ۱۴۰۵ (۴ اکتبر ۲۰۲۶)</div>
+<p>«ایمیل لبه» (<bdi>Edge Mail</bdi>) به شما امکان می‌دهد روی دامنهٔ همین سایت یک آدرس ایمیل بگیرید، در آن ایمیل دریافت کنید و از آن ایمیل بفرستید. این سیاست توضیح می‌دهد چه اطلاعاتی پردازش می‌شود، به چه دلیل، چه کسانی ممکن است به آن دسترسی داشته باشند و شما چه اختیاراتی دارید. منظور از «ما» و «مدیر سرویس»، فرد یا سازمانی است که این نسخه از سرویس را راه‌اندازی کرده است.</p>
+<div class="callout"><p><b>خلاصه:</b> تبلیغات، ردیابی و تحلیل رفتار نداریم و اطلاعات شما را نمی‌فروشیم. اما ایمیل‌ها به‌صورت سرتاسری (<bdi>end-to-end</bdi>) رمزنگاری نمی‌شوند؛ پس از این سرویس برای اطلاعات بسیار حساس استفاده نکنید.</p></div>
+
+<h3>۱. اطلاعاتی که پردازش می‌کنیم</h3>
+<ul>
+<li><b>حساب کاربری:</b> ایمیل ثبت‌نام، زبان و پوستهٔ انتخابی و زمان ساخت حساب. رمز عبور شما هرگز ذخیره نمی‌شود؛ فقط هش آن (<bdi>PBKDF2-SHA256</bdi> همراه با <bdi>salt</bdi>) نگهداری می‌شود که قابل بازگرداندن نیست.</li>
+<li><b>آدرس‌ها:</b> آدرس‌هایی که روی این دامنه می‌گیرید و زمان گرفتن آن‌ها.</li>
+<li><b>ایمیل‌های دریافتی:</b> برای آدرس‌هایی که ثبت شده‌اند، نشانی و نام فرستنده، موضوع، متن و <bdi>HTML</bdi> پیام، هدرها، فهرست پیوست‌ها (فقط نام، نوع و حجم؛ خود پیوست‌ها ذخیره نمی‌شوند)، شناسهٔ پیام، وضعیت خوانده‌شده/حذف‌شده و زمان دریافت ذخیره می‌شود. ایمیل‌هایی که به آدرس‌های ثبت‌نشده فرستاده شوند دور ریخته می‌شوند و ذخیره نمی‌شوند.</li>
+<li><b>ایمیل‌های ارسالی:</b> پیام شما از طریق سرویس ایمیل کلودفلر به گیرنده می‌رسد و ما نسخه‌ای از آن نگه نمی‌داریم (پوشهٔ «ارسال‌شده» وجود ندارد). فقط گزارشی از آدرس فرستنده، آدرس گیرنده، موضوع، شناسهٔ پیام و زمان نگه می‌داریم که برای اعمال سقف ارسال روزانه استفاده می‌شود.</li>
+<li><b>نشست و مرورگر:</b> یک کوکی نشست ضروری و <bdi>HTTP-only</bdi> که شما را وارد نگه می‌دارد (۷ روز)، و انتخاب زبان و پوستهٔ شما که در حافظهٔ محلی مرورگرتان ذخیره می‌شود.</li>
+<li><b>اطلاعات فنی:</b> نشانی <bdi>IP</bdi> شما فقط برای مدتی کوتاه و در حافظه برای محدود کردن تعداد درخواست‌ها در هر دقیقه استفاده می‌شود و برنامه آن را در پایگاه داده ذخیره نمی‌کند. کلودفلر که زیرساخت را اجرا می‌کند ممکن است طبق سیاست‌های خودش گزارش‌هایی نگه دارد.</li>
+</ul>
+<h3>۲. استفاده از اطلاعات</h3>
+<p>فقط برای اجرای سرویس: ساخت و ایمن‌سازی حساب، تحویل و نمایش ایمیل‌های شما، ارسال ایمیل‌هایی که می‌نویسید، اعمال محدودیت‌ها، جلوگیری از سوءاستفاده و رفع مشکلات. از اطلاعات شما برای تبلیغات، ساخت پروفایل یا فروش به دیگران استفاده نمی‌کنیم.</p>
+<h3>۳. چه اشخاص دیگری درگیر هستند</h3>
+<ul>
+<li><b>کلودفلر (<bdi>Cloudflare</bdi>)</b> سایت را میزبانی می‌کند (<bdi>Workers</bdi>)، داده‌ها را نگه می‌دارد (پایگاه داده <bdi>D1</bdi>)، ایمیل‌های ورودی را دریافت می‌کند (<bdi>Email Routing</bdi>) و ایمیل‌های خروجی را تحویل می‌دهد (<bdi>Email Service</bdi>). کلودفلر داده‌ها را از طرف ما و طبق شرایط و سیاست حریم خصوصی خودش پردازش می‌کند.</li>
+<li><b>فونت‌های گوگل:</b> صفحه‌ها فونت را از گوگل بارگیری می‌کنند و گوگل هنگام بازدید شما نشانی <bdi>IP</bdi> و اطلاعات مرورگرتان را دریافت می‌کند.</li>
+<li><b>کسانی که برایشان ایمیل می‌فرستید:</b> هر چه بفرستید به گیرنده و ارائه‌دهندهٔ ایمیل او می‌رسد و آن‌ها طبق سیاست‌های خودشان با آن رفتار می‌کنند.</li>
+<li><b>مراجع قانونی:</b> در صورتی که قانون ایجاب کند، یا برای محافظت از سرویس و کاربران در برابر سوءاستفاده، ممکن است اطلاعاتی را ارائه کنیم.</li>
+</ul>
+<p><b>محتوای خارجی در ایمیل‌ها.</b> ایمیل‌های <bdi>HTML</bdi> در یک محیط ایزوله و بدون اجرای اسکریپت نمایش داده می‌شوند، اما تصاویر و محتوای دیگر پیام ممکن است همچنان از سرور فرستنده بارگیری شوند. این کار می‌تواند به فرستنده نشان دهد که پیام را باز کرده‌اید و نشانی <bdi>IP</bdi> شما را آشکار کند.</p>
+<h3>۴. مدت نگهداری و حذف اطلاعات</h3>
+<ul>
+<li>حساب، آدرس‌ها و ایمیل‌های شما تا زمان حذف شدن نگه داشته می‌شوند.</li>
+<li><b>حذف یک پیام</b> آن را از صندوق ورودی شما برمی‌دارد، اما فقط با علامت «حذف‌شده» مشخص می‌شود و ممکن است تا زمانی که آدرس را آزاد کنید یا حساب شما حذف شود، ذخیره بماند.</li>
+<li><b>آزاد کردن یک آدرس</b> تمام ایمیل‌های ذخیره‌شده برای آن آدرس را برای همیشه حذف می‌کند.</li>
+<li>گزارش ارسال تا زمانی که حساب شما وجود دارد نگه داشته می‌شود.</li>
+<li>نشست‌ها پس از ۷ روز منقضی می‌شوند و با خروج از حساب، نشست شما بلافاصله پایان می‌یابد.</li>
+<li>کلودفلر ممکن است پس از حذف داده‌ها، نسخه‌های پشتیبان پایگاه داده را برای مدتی محدود نگه دارد.</li>
+<li><b>بستن حساب:</b> فعلاً دکمه‌ای برای این کار وجود ندارد. با ما تماس بگیرید (بند ۹) تا حساب، آدرس‌ها، ایمیل‌های ذخیره‌شده و گزارش ارسال شما را حذف کنیم.</li>
+</ul>
+<h3>۵. امنیت</h3>
+<p>سایت از طریق <bdi>HTTPS</bdi> ارائه می‌شود، رمزهای عبور هش می‌شوند، کوکی نشست <bdi>HTTP-only</bdi> و <bdi>SameSite=Strict</bdi> است و هر کاربر فقط می‌تواند ایمیل‌های آدرس‌های خودش را بخواند. با این حال هیچ سیستمی کاملاً ایمن نیست و برخی محدودیت‌ها ذاتی ایمیل هستند: پیام‌ها <b>رمزنگاری سرتاسری نمی‌شوند</b>، ممکن است بین سرورهای ایمیل بدون رمزنگاری در اینترنت جابه‌جا شوند، و مدیر سرویس که به پایگاه داده دسترسی مدیریتی دارد از نظر فنی می‌تواند پیام‌های ذخیره‌شده را بخواند.</p>
+<h3>۶. اختیارات و حقوق شما</h3>
+<p>می‌توانید درخواست کنید نسخه‌ای از اطلاعاتتان به شما داده شود، اصلاح شود یا حذف شود. بسته به محل زندگی‌تان (مثلاً بر اساس <bdi>GDPR</bdi>) ممکن است حق اعتراض یا محدود کردن پردازش و شکایت به مرجع حفاظت از داده را هم داشته باشید. زبان و پوسته را هر زمان می‌توانید تغییر دهید. اگر کوکی نشست را مسدود کنید، نمی‌توانید وارد حساب شوید.</p>
+<h3>۷. کودکان</h3>
+<p>ایمیل لبه برای افراد زیر ۱۶ سال در نظر گرفته نشده است و آگاهانه از کودکان اطلاعات جمع‌آوری نمی‌کنیم. اگر فکر می‌کنید کودکی حساب ساخته است، با ما تماس بگیرید تا آن را حذف کنیم.</p>
+<h3>۸. پردازش بین‌المللی و تغییرات</h3>
+<p>کلودفلر در سراسر جهان فعالیت می‌کند، بنابراین ممکن است اطلاعات شما در کشورهایی غیر از کشور خودتان پردازش شود. ممکن است این سیاست را به‌روزرسانی کنیم؛ تاریخ بالای صفحه آخرین نسخه را نشان می‌دهد و ادامهٔ استفاده از سرویس پس از تغییر به معنی پذیرش آن است.</p>
+<h3>۹. تماس</h3>
+<p>برای پرسش، درخواست دسترسی یا حذف اطلاعات و نگرانی‌های مربوط به حریم خصوصی، از طریق صفحهٔ پروژه با مدیر سرویس تماس بگیرید: <a href="https://github.com/hosseinb1111/email-service-cloudflare/issues" target="_blank" rel="noopener noreferrer"><bdi>github.com/hosseinb1111/email-service-cloudflare</bdi></a>.</p>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <div class="lk">
+      <a class="tg-lk on" href="/privacy" data-i18n="privacy">Privacy</a>
+      <a class="gh-lk" href="/terms" data-i18n="terms">Terms</a>
+    </div>
+    <div class="copy">© Edge Mail</div>
+  </footer>
+</div>
+
+<script src="/js/theme.js"></script>
+<script src="/js/i18n.js"></script>
+<script src="/js/api.js"></script>
+</body>
+</html>
